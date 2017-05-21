@@ -81,7 +81,7 @@
                             android:id="@+id/textView"
                             android:textColor="@color/primaryTextColor"
                             android:layout_gravity="center_horizontal"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -110,7 +110,8 @@
                             android:id="@+id/textView2"
                             android:textColor="@color/primaryTextColor"
                             android:layout_gravity="center_horizontal"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            tools:ignore="SpUsage" />
 
                     </LinearLayout>
 
@@ -139,7 +140,7 @@
                             android:id="@+id/textView3"
                             android:textColor="@color/primaryTextColor"
                             android:layout_gravity="center_horizontal"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -168,7 +169,7 @@
                             android:id="@+id/textView4"
                             android:textColor="@color/primaryTextColor"
                             android:layout_gravity="center_horizontal"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -197,7 +198,7 @@
                             android:id="@+id/textView5"
                             android:textColor="@color/primaryTextColor"
                             android:layout_gravity="center_horizontal"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -226,7 +227,7 @@
                             android:id="@+id/textView6"
                             android:textColor="@color/primaryTextColor"
                             android:layout_gravity="center_horizontal"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
