@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,7 +41,7 @@ public class MenuAdapter extends ArrayAdapter{
     static class DataHandler{
         TextView name;
         TextView price;
-        ImageButton btn;
+        FrameLayout btn;
         TextView quantity;
         ImageView thumbnail;
     }
@@ -77,7 +78,7 @@ public class MenuAdapter extends ArrayAdapter{
             handler = new DataHandler();
             handler.name = (TextView) row.findViewById(R.id.bar_item_name);
             handler.price = (TextView) row.findViewById(R.id.bar_item_price);
-            handler.btn = (ImageButton) row.findViewById(R.id.bar_add_button);
+            handler.btn = (FrameLayout) row.findViewById(R.id.bar_item_add);
             handler.quantity = (TextView) row.findViewById(R.id.bar_item_quantity);
             handler.thumbnail = (ImageView) row.findViewById(R.id.bar_item_thumbnail);
             handler.thumbnail = setThumbnailSrc(handler.thumbnail);
