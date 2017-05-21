@@ -20,8 +20,6 @@
             android:layout_height="match_parent"
             >
 
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -69,7 +67,9 @@
                             android:src="@drawable/coffee"
                             android:background="#00000000"
                             android:layout_marginRight="16dp"
-                            android:layout_marginLeft="16dp">
+                            android:layout_marginLeft="16dp"
+                            android:onClick="bar"
+                            android:foreground="?attr/selectableItemBackgroundBorderless">
 
                         </ImageButton>
 
@@ -100,7 +100,8 @@
                             android:src="@drawable/restaurant"
                             android:background="#00000000"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp" />
+                            android:layout_marginRight="16dp"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -130,7 +131,8 @@
                             android:src="@drawable/smiley"
                             android:background="#00000000"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp" />
+                            android:layout_marginRight="16dp"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -159,7 +161,8 @@
                             android:src="@drawable/star"
                             android:background="#00000000"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp" />
+                            android:layout_marginRight="16dp"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -188,7 +191,8 @@
                             android:src="@drawable/moneycash"
                             android:background="#00000000"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp" />
+                            android:layout_marginRight="16dp"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -217,7 +221,8 @@
                             android:src="@drawable/questionmark"
                             android:background="#00000000"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp" />
+                            android:layout_marginRight="16dp"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -240,7 +245,8 @@
                 app:backgroundTint="@color/colorAccent"
                 app:layout_anchor="@id/adPanel"
                 app:layout_anchorGravity="bottom|right|end"
-                android:src="@drawable/ic_shopping_cart_white_32dp">
+                android:src="@drawable/ic_shopping_cart_white_32dp"
+                android:visibility="invisible">
             </android.support.design.widget.FloatingActionButton>
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>
