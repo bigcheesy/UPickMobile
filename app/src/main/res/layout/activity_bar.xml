@@ -39,6 +39,7 @@
         android:src="@drawable/ic_shopping_cart_white_32dp"
         app:backgroundTint="@color/colorAccent"
         app:layout_anchorGravity="bottom|right|end"
-        android:foreground="?attr/selectableItemBackgroundBorderless">
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:onClick="openCart">
     </android.support.design.widget.FloatingActionButton>
 </RelativeLayout>

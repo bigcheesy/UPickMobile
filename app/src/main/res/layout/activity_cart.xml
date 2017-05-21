@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dcyberpanda.upickmobile.CartActivity"
+    android:orientation="vertical"
+    android:weightSum="100"
+    >
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar">
+    </include>
+
+    <LinearLayout
+        android:weightSum="100"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="16dp"
+        android:background="#ffffff"
+        android:elevation="5dp"
+        android:orientation="vertical"
+        android:layout_weight="90">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Fatura"
+            android:id="@+id/textView7"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/secondaryTextColor"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="90"
+            android:id="@+id/cart_list"
+            tools:listitem="@layout/cart_item" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primaryTextColor"
+                android:layout_marginLeft="16dp"
+                android:text="Totali"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primaryTextColor"
+                android:text="10000"
+                android:textSize="20sp"
+                android:id="@+id/cart_total"
+                android:layout_alignTop="@+id/textView11"
+                android:layout_toStartOf="@+id/textView11"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primaryTextColor"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="5dp"
+                android:text="LEK"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="20sp"
+                android:id="@+id/textView11" />
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:hint="Shkruani shenimet mbi porosine"
+            android:gravity="center_horizontal"
+            android:textColor="@color/primaryTextColor"
+            android:singleLine="false"
+            android:maxLines="2"
+            android:scrollbars = "vertical"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="10"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:elevation="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Porosit"
+        android:textColor="#fff"
+        android:background="@drawable/elevated_button_blue"
+        android:textSize="18sp"
+        />
+</LinearLayout>

@@ -11,7 +11,9 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TableLayout;
@@ -40,6 +42,9 @@ public class BarActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.bar_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
+        for (CartItem item : CartActivity.cartItems){
+            Log.d("lmao", item.getName() + " " + item.getQuantity());
+        }
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -56,6 +61,12 @@ public class BarActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(tab.getPosition());
             }
         });
+    }
+
+    public void openCart(View v){
+        Intent intent = new Intent(BarActivity.this, CartActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -109,62 +120,35 @@ public class BarActivity extends AppCompatActivity {
 
     private ArrayList<MenuItem> getItemsWarm(){
         ArrayList<MenuItem> items = new ArrayList<>();
-        items.add(new MenuItem("Kafe",60));
         items.add(new MenuItem("Caj",60));
-        items.add(new MenuItem("Makiato",80));
-        items.add(new MenuItem("Kapucino",120));
         items.add(new MenuItem("Cokollate e ngrohte",150));
         items.add(new MenuItem("Kafe",60));
-        items.add(new MenuItem("Caj",60));
-        items.add(new MenuItem("Makiato",80));
+        items.add(new MenuItem("Kafe latte",150));
+        items.add(new MenuItem("Kakao",100));
         items.add(new MenuItem("Kapucino",120));
-        items.add(new MenuItem("Cokollate e ngrohte",150));
-        items.add(new MenuItem("Kafe",60));
-        items.add(new MenuItem("Caj",60));
         items.add(new MenuItem("Makiato",80));
-        items.add(new MenuItem("Kapucino",120));
-        items.add(new MenuItem("Cokollate e ngrohte",150));
-
+        items.add(new MenuItem("Makiato e gjate",100));
+        items.add(new MenuItem("Salep",120));
         return items;
     }
 
     private ArrayList<MenuItem> getItemsCold(){
         ArrayList<MenuItem> items = new ArrayList<>();
-        items.add(new MenuItem("Coca Cola",60));
         items.add(new MenuItem("Caj i ftohte",60));
-        items.add(new MenuItem("Makiato me akull",80));
-        items.add(new MenuItem("Kapucino fredo",120));
+        items.add(new MenuItem("Coca Cola",120));
         items.add(new MenuItem("Cokollate e ftohte",150));
-        items.add(new MenuItem("Coca Cola",60));
-        items.add(new MenuItem("Caj i ftohte",60));
-        items.add(new MenuItem("Makiato me akull",80));
+        items.add(new MenuItem("Fanta",120));
         items.add(new MenuItem("Kapucino fredo",120));
-        items.add(new MenuItem("Cokollate e ftohte",150));
-        items.add(new MenuItem("Coca Cola",60));
-        items.add(new MenuItem("Caj i ftohte",60));
-        items.add(new MenuItem("Makiato me akull",80));
-        items.add(new MenuItem("Kapucino fredo",120));
-        items.add(new MenuItem("Cokollate e ftohte",150));
 
         return items;
     }
 
     private ArrayList<MenuItem> getItemsAlcoholic(){
         ArrayList<MenuItem> items = new ArrayList<>();
-        items.add(new MenuItem("Raki",100));
-        items.add(new MenuItem("Jack Daniels",700));
         items.add(new MenuItem("Amaro montenegro",500));
-        items.add(new MenuItem("Jagermeister",500));
-        items.add(new MenuItem("Vodka",500));
-        items.add(new MenuItem("Raki",100));
         items.add(new MenuItem("Jack Daniels",700));
-        items.add(new MenuItem("Amaro montenegro",500));
         items.add(new MenuItem("Jagermeister",500));
-        items.add(new MenuItem("Vodka",500));
         items.add(new MenuItem("Raki",100));
-        items.add(new MenuItem("Jack Daniels",700));
-        items.add(new MenuItem("Amaro montenegro",500));
-        items.add(new MenuItem("Jagermeister",500));
         items.add(new MenuItem("Vodka",500));
 
         return items;

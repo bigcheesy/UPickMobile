@@ -1,7 +1,9 @@
 package com.example.dcyberpanda.upickmobile.BarActivityClasses;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,7 @@ public class MenuAdapter extends ArrayAdapter{
         TextView name;
         TextView price;
         ImageButton btn;
+        TextView quantity;
         ImageView thumbnail;
     }
 
@@ -65,17 +68,18 @@ public class MenuAdapter extends ArrayAdapter{
 
         View row;
         row = convertView;
-        DataHandler handler;
+        final DataHandler handler;
 
         if (convertView == null){
 
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(viewid,parent,false);
             handler = new DataHandler();
-            handler.name = (TextView) row.findViewById(R.id.menu_item_name);
-            handler.price = (TextView) row.findViewById(R.id.menu_item_price);
-            handler.btn = (ImageButton) row.findViewById(R.id.menu_add_button);
-            handler.thumbnail = (ImageView) row.findViewById(R.id.menu_thumbnail);
+            handler.name = (TextView) row.findViewById(R.id.bar_item_name);
+            handler.price = (TextView) row.findViewById(R.id.bar_item_price);
+            handler.btn = (ImageButton) row.findViewById(R.id.bar_add_button);
+            handler.quantity = (TextView) row.findViewById(R.id.bar_item_quantity);
+            handler.thumbnail = (ImageView) row.findViewById(R.id.bar_item_thumbnail);
             handler.thumbnail = setThumbnailSrc(handler.thumbnail);
             row.setTag(handler);
         }else{
@@ -89,11 +93,12 @@ public class MenuAdapter extends ArrayAdapter{
         handler.name.setText(dataProvider.getName());
         handler.price.setText(dataProvider.getPrice().toString());
 
+        changeQuantityDisplay(handler.quantity,dataProvider);
 
         handler.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"Click",Toast.LENGTH_SHORT).show();
+                changeQuantityDisplay(handler.quantity,addToCart(dataProvider));
             }
         });
 
@@ -113,5 +118,36 @@ public class MenuAdapter extends ArrayAdapter{
                 break;
         }
         return thumbnail;
+    }
+
+    private Integer addToCart(MenuItem item){
+        for (CartItem cartItem : CartActivity.cartItems){
+            if (cartItem.getName().equals(item.getName())){
+                cartItem.setQuantity(cartItem.getQuantity() + 1);
+                return cartItem.getQuantity();
+            }
+        }
+
+        CartActivity.cartItems.add(new CartItem(item.getName(),item.getPrice(),1));
+        return 1;
+    }
+
+    private void changeQuantityDisplay(TextView textView,MenuItem menuItem){
+        Integer quantity = 0;
+        for (CartItem cartItem : CartActivity.cartItems){
+            if (cartItem.getName().equals(menuItem.getName())){
+                quantity = cartItem.getQuantity();
+            }
+        }
+        changeQuantityDisplay(textView,quantity);
+    }
+
+    private void changeQuantityDisplay(TextView textView, Integer quantity){
+        if (quantity == 0){
+            textView.setVisibility(View.GONE);
+        }else{
+            textView.setVisibility(View.VISIBLE);
+        }
+        textView.setText(quantity.toString());
     }
 }
