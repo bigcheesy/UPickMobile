@@ -81,19 +81,19 @@ public class CartAdapter extends ArrayAdapter{
         }
 
 
-        final CartItem dataProvider;
-        dataProvider = (CartItem) this.getItem(position);
+        final CartItem cartItem;
+        cartItem = (CartItem) this.getItem(position);
 
-        handler.name.setText(dataProvider.getName());
-        handler.price.setText(dataProvider.getPrice().toString());
-        handler.quantity.setText(dataProvider.getQuantity().toString());
+        handler.name.setText(cartItem.getName());
+        handler.price.setText(cartItem.getPrice().toString());
+        handler.quantity.setText(cartItem.getQuantity().toString());
 
         handler.btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (dataProvider.getQuantity() < 99){
-                    dataProvider.setQuantity(dataProvider.getQuantity() + 1);
-                    handler.quantity.setText(dataProvider.getQuantity().toString());
+                if (cartItem.getQuantity() < 99){
+                    cartItem.setQuantity(cartItem.getQuantity() + 1);
+                    handler.quantity.setText(cartItem.getQuantity().toString());
                     CartActivity.calculateTotal();
                 }
             }
@@ -102,9 +102,9 @@ public class CartAdapter extends ArrayAdapter{
         handler.btnremove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (dataProvider.getQuantity() > 0){
-                    dataProvider.setQuantity(dataProvider.getQuantity() - 1);
-                    handler.quantity.setText(dataProvider.getQuantity().toString());
+                if (cartItem.getQuantity() > 0){
+                    cartItem.setQuantity(cartItem.getQuantity() - 1);
+                    handler.quantity.setText(cartItem.getQuantity().toString());
                     CartActivity.calculateTotal();
                 }
             }

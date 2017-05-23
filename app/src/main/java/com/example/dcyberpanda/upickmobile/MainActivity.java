@@ -25,4 +25,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void ratings(View v){
+        Intent intent = new Intent(MainActivity.this, RatingActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
