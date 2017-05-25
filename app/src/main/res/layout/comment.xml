@@ -21,36 +21,24 @@
         android:orientation="vertical"
         android:weightSum="1">
 
+
         <TextView
+            android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
-            android:text="Si e vleresoni sherbimin?"
+            android:text="Cfare mendoni per kete lokal"
             android:textColor="@color/primaryTextColor"
             android:textSize="17dp" />
 
-        <RatingBar
-            android:id="@+id/ratingBar"
-            style="@style/CustomRating"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/txtInput"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-
-            android:layout_weight="0.25"
-
-            android:isIndicator="false" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-
-            android:text="Lezetshem"
-            android:textColor="@color/secondaryTextColor"
-            android:textSize="15dp" />
+            android:ems="10"
+            android:inputType="textPersonName" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -59,14 +47,14 @@
 
             >
 
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
                 android:layout_marginTop="5dp"
-                >
+                android:orientation="horizontal">
 
 
                 <ImageView
@@ -83,27 +71,24 @@
                     android:layout_marginRight="5dp"
                     android:src="@drawable/pikjoaktive" />
 
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="Publiko"
+                    android:textColor="@color/primaryTextColor" />
+
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Publiko"
-                android:clickable="true"
-                android:textColor="@color/primaryTextColor" />
-
 
         </RelativeLayout>
 
 
-
-
     </LinearLayout>
-
-
 
 
     <RelativeLayout
@@ -134,8 +119,6 @@
         android:layout_marginRight="16dp"
         android:layout_weight="75"
         tools:listitem="@layout/rating_item"
-
-
 
 
         />

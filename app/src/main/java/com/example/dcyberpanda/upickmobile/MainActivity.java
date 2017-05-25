@@ -30,5 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, RatingActivity.class);
         startActivity(intent);
         finish();
+
+
     }
 }
