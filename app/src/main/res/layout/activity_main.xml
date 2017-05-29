@@ -8,7 +8,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fafafa">
+    android:background="#fafafa"
+    android:weightSum="100">
 
     <include
         android:id="@+id/toolbar"
@@ -17,7 +18,8 @@
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="95"
             >
 
             <LinearLayout
@@ -42,118 +44,57 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp" />
+
                 <android.support.v7.widget.GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
                     android:layout_weight="0.5"
                     app:columnCount="3"
-                    app:rowCount="2"
-                    android:layout_marginTop="16dp"
-                    >
+                    app:rowCount="1">
 
                     <LinearLayout
+                        android:gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:orientation="vertical"
                         app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:orientation="vertical">
+                        app:layout_rowWeight="1">
 
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/coffee"
-                            android:background="#00000000"
-                            android:layout_marginRight="16dp"
                             android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#00000000"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"
                             android:onClick="bar"
-                            android:foreground="?attr/selectableItemBackgroundBorderless">
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/coffee">
 
                         </ImageButton>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Bar"
                             android:id="@+id/textView"
-                            android:textColor="@color/primaryTextColor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:text="Menu"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/primaryTextColor"
                             android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:orientation="vertical"
                         app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:orientation="vertical">
-
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:adjustViewBounds="true"
-                            android:background="#00000000"
-                            android:foreground="?attr/selectableItemBackgroundBorderless"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/restaurant" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Restorant"
-                            android:id="@+id/textView2"
-                            android:textColor="@color/primaryTextColor"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="16dp"
-                            tools:ignore="SpUsage" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:orientation="vertical">
-
-                        <ImageButton
-                            android:id="@+id/imageButton2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:adjustViewBounds="true"
-                            android:background="#00000000"
-                            android:foreground="?attr/selectableItemBackgroundBorderless"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/smiley" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Argetim"
-                            android:id="@+id/textView3"
-                            android:textColor="@color/primaryTextColor"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:orientation="vertical">
+                        app:layout_rowWeight="1">
 
                         <ImageButton
                             android:layout_width="match_parent"
@@ -168,77 +109,144 @@
                             android:src="@drawable/star" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Vleresime"
                             android:id="@+id/textView4"
-                            android:textColor="@color/primaryTextColor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:text="Vleresime"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/primaryTextColor"
                             android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:orientation="vertical"
                         app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:orientation="vertical">
+                        app:layout_rowWeight="1">
 
                         <ImageButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/moneycash"
-                            android:background="#00000000"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="16dp"
-                            android:foreground="?attr/selectableItemBackgroundBorderless"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Paguaj"
-                            android:id="@+id/textView5"
-                            android:textColor="@color/primaryTextColor"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        app:layout_columnWeight="1"
-                        app:layout_rowWeight="1"
-                        android:orientation="vertical">
-
-                        <ImageButton
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/questionmark"
                             android:background="#00000000"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:foreground="?attr/selectableItemBackgroundBorderless"/>
+                            android:foreground="?attr/selectableItemBackgroundBorderless"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/coupon" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Info"
                             android:id="@+id/textView6"
-                            android:textColor="@color/primaryTextColor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:text="Shpenzo piket"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/primaryTextColor"
                             android:textSize="16sp" />
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageButton
+                            android:id="@+id/imageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#00000000"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/restaurant" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Restorant"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/primaryTextColor"
+                            android:textSize="16dp"
+                            tools:ignore="SpUsage" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageButton
+                            android:id="@+id/imageButton2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#00000000"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/smiley" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Argetim"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/primaryTextColor"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#00000000"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/moneycash" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Paguaj"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/primaryTextColor"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
                 </android.support.v7.widget.GridLayout>
             </LinearLayout>
             <android.support.design.widget.FloatingActionButton
@@ -252,4 +260,15 @@
                 android:visibility="invisible">
             </android.support.design.widget.FloatingActionButton>
     </android.support.design.widget.CoordinatorLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:gravity="center_vertical|right"
+            android:paddingRight="16dp"
+            android:text="6000 Pike"/>
 </LinearLayout>

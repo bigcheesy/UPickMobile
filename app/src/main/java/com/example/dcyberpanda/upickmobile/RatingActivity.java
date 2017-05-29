@@ -1,6 +1,7 @@
 package com.example.dcyberpanda.upickmobile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -41,6 +42,13 @@ public class RatingActivity extends AppCompatActivity {
         createList();
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(RatingActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void createList(){
