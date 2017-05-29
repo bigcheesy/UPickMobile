@@ -5,10 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.dcyberpanda.upickmobile.PointsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="100">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
         ></include>
+
+    <ListView
+        android:id="@+id/coupon_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="94"
+        tools:listitem="@layout/coupon_item"/>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kuponat skadojne 4 ore pas blerjes. Vetem nje kupon mund te jete aktiv ne te njejten kohe."
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:gravity="center_vertical|right"
+        android:paddingRight="16dp"
+        android:text="6000 Pike"/>
 </LinearLayout>

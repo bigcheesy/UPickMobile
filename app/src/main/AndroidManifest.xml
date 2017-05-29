@@ -19,6 +19,7 @@
         <activity android:name=".RatingActivity"></activity>
         <activity android:name=".BarActivity" />
         <activity android:name=".CartActivity"></activity>
+        <activity android:name=".PointsActivity"></activity>
     </application>
 
 </manifest>

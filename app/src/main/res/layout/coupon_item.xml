@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:weightSum="100">
+
+    <TextView
+        android:id="@+id/coupon_thumbnail"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="500"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:background="@drawable/blue_circle"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:layout_weight="80"
+        >
+        <TextView
+            android:id="@+id/coupon_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/primaryTextColor"
+            android:text="Kupon 500L"/>
+        <TextView
+            android:id="@+id/coupon_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/secondaryTextColor"
+            android:text="Me kete kupon mund te merrni nje pije falas deri ne 500 LEK"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/coupon_purchase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/orangesquare"
+        android:layout_weight="20"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:elevation="2dp"
+        android:text="10000 \nPike"
+        android:clickable="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        ></TextView>
+</LinearLayout>

@@ -30,7 +30,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, RatingActivity.class);
         startActivity(intent);
         finish();
+    }
 
-
+    public void points(View v){
+        Intent intent = new Intent(MainActivity.this, PointsActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
