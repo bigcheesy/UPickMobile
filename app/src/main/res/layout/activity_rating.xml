@@ -13,13 +13,15 @@
         layout="@layout/toolbar"
         ></include>
 
-    <LinearLayout
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="22.65"
         android:background="@color/colorPrimaryLight"
         android:orientation="vertical"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/rating_viewpager"
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +31,10 @@
             android:layout_marginTop="10dp"
             android:text="Si e vleresoni sherbimin?"
             android:textColor="@color/primaryTextColor"
+            android:id="@+id/vleresimisherbimit"
             android:textSize="17dp" />
+
+
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -47,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-
+            android:id="@+id/lezetshem"
             android:text="Lezetshem"
             android:textColor="@color/secondaryTextColor"
             android:textSize="15dp" />
@@ -96,12 +101,14 @@
                 android:textColor="@color/primaryTextColor" />
 
 
+
+
         </RelativeLayout>
 
 
 
 
-    </LinearLayout>
+    </android.support.v4.view.ViewPager>
 
 
 
