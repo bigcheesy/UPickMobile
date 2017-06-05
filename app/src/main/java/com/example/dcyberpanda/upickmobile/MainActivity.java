@@ -17,7 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CartActivity.cartItems = new ArrayList<>();
+        if (CartActivity.cartItems == null) {
+            CartActivity.cartItems = new ArrayList<>();
+        }
     }
 
     public void bar(View v){
@@ -33,8 +35,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void points(View v){
-        Intent intent = new Intent(MainActivity.this, PointsActivity.class);
+        Intent intent;
+
+        if (CouponActivity.purchasedCoupon != null){
+            intent = new Intent(MainActivity.this, CouponActivity.class);
+        }else{
+            intent = new Intent(MainActivity.this, PointsActivity.class);
+        }
+
         startActivity(intent);
         finish();
     }
+
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class PointsActivity extends AppCompatActivity {
 
     private ArrayList<Coupon> coupons;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

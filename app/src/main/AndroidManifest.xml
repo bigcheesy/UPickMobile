@@ -15,11 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name=".RatingActivity"></activity>
+        <activity android:name=".RatingActivity" />
         <activity android:name=".BarActivity" />
-        <activity android:name=".CartActivity"></activity>
-        <activity android:name=".PointsActivity"></activity>
+        <activity android:name=".CartActivity" />
+        <activity android:name=".PointsActivity" />
+        <activity android:name=".CouponActivity"></activity>
+        <service android:name=".CouponService"></service>
     </application>
 
 </manifest>

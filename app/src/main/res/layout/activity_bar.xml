@@ -41,6 +41,6 @@
         app:layout_anchorGravity="bottom|right|end"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:onClick="openCart"
-        android:visibility="gone">
+        android:visibility="visible">
     </android.support.design.widget.FloatingActionButton>
 </RelativeLayout>

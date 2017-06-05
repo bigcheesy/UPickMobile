@@ -48,7 +48,7 @@
         android:layout_marginRight="16dp"
         android:textColor="@color/primaryTextColor"
         android:layout_alignTop="@+id/bar_item_price"
-        android:layout_alignParentRight="true" />
+        android:layout_toStartOf="@+id/bar_item_add" />
 
     <FrameLayout
         android:id="@+id/bar_item_add"
@@ -59,7 +59,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:clickable="true"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/bar_add_button"

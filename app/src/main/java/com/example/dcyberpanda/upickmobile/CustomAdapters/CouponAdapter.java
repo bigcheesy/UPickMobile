@@ -1,6 +1,7 @@
 package com.example.dcyberpanda.upickmobile.CustomAdapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,8 +82,20 @@ public class CouponAdapter extends ArrayAdapter{
         handler.description.setText(coupon.getDescription());
         handler.thumbnail.setText(coupon.getThumbnailText());
         handler.purchaseButton.setText(coupon.getCost().toString() + " \nPike");
+        handler.purchaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buyCoupon(coupon);
+            }
+        });
 
         return row;
+    }
+
+    private void buyCoupon(Coupon coupon){
+        CouponActivity.purchasedCoupon = new PurchasedCoupon(coupon);
+        Intent intent = new Intent(getContext(), CouponActivity.class);
+        getContext().startActivity(intent);
     }
 
 }

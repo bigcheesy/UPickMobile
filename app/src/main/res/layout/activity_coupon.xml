@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vendi i blerjes:"
+        android:layout_marginTop="16dp"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/full_coupon_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grand Bocca"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:layout_below="@+id/textView15"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Koha e blerjes:"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/full_coupon_place"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/full_coupon_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6/1/2017 1:27PM"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:layout_below="@+id/textView13"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/full_coupon_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:layout_below="@+id/full_coupon_thumbnail"
+        android:textColor="@color/primaryTextColor"
+        android:text="Kupon 500 LEK"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/full_coupon_thumbnail"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/blue_circle"
+        android:layout_centerInParent="true"
+        android:elevation="5dp"
+        android:textSize="100dp"
+        android:textColor="@color/primaryTextColor"
+        android:gravity="center"
+        android:text="500"
+        />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Koha e mbetur:"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/full_coupon_time_left"
+        />
+
+    <TextView
+        android:id="@+id/full_coupon_time_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00:00"
+        android:layout_marginBottom="16dp"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

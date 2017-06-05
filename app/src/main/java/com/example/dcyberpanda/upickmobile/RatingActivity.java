@@ -36,9 +36,9 @@ public class RatingActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.rating_viewpager);
         viewPager.setAdapter(new CustomAdapter(getSupportFragmentManager(),getApplicationContext()));
         ratings.add(new Rating("Kristi", "Lokal qr", 5));
-        ratings.add(new Rating("Dami", "Lokal eh", 3));
-        ratings.add(new Rating("Samir", "SUPER APP DO E BLEJ PATJETER!!!!!!", 5));
-        ratings.add(new Rating("Fabio", "Hajde e shkarkojm me tor", 1));
+        ratings.add(new Rating("Landi", "Lokal cka", 3));
+        ratings.add(new Rating("Tedi", "lokal qr", 5));
+        ratings.add(new Rating("Fabio", "lokal vk", 1));
         createList();
 
 
