@@ -90,8 +90,6 @@ public class RatingActivity extends AppCompatActivity {
         ratings.add(new Rating("Tedi", "lokal qr", 5));
         ratings.add(new Rating("Fabio", "lokal vk", 1));
         createList();
-
-
     }
 
     @Override
