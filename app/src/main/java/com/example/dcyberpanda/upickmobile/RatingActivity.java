@@ -44,7 +44,7 @@ public class RatingActivity extends AppCompatActivity {
 
         viewPager.setAdapter(customAdapter);
 
-        LinearLayout sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
+        LinearLayout sliderDotspanel = (LinearLayout) findViewById(R.id.rating_sliderdots);
 
         ViewPagerDots viewPagerDots = new ViewPagerDots(viewPager, customAdapter, sliderDotspanel, getApplicationContext());
         viewPagerDots.setListener();

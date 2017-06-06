@@ -30,20 +30,32 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 >
 
-                <ImageView
-                    android:outlineProvider="bounds"
-                    app:layout_anchor="@+id/toolbar"
-                    app:layout_anchorGravity="bottom"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:src="@drawable/placeholderad"
-                    android:scaleType="fitXY"
-                    android:id="@+id/adPanel"
-                    android:elevation="8dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="5dp"
+                    android:elevation="8dp"
+                    android:outlineProvider="bounds"
+                    >
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/main_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+                    <LinearLayout
+                        android:id="@+id/main_sliderdots"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:orientation="horizontal"></LinearLayout>
+
+                </FrameLayout>
 
                 <android.support.v7.widget.GridLayout
                     android:layout_width="match_parent"
@@ -255,7 +267,6 @@
                 android:layout_width="wrap_content"
                 android:layout_margin="@dimen/fab_margin"
                 app:backgroundTint="@color/colorAccent"
-                app:layout_anchor="@id/adPanel"
                 app:layout_anchorGravity="bottom|right|end"
                 android:src="@drawable/ic_shopping_cart_white_32dp"
                 android:visibility="invisible">
