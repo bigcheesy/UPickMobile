@@ -14,16 +14,24 @@
         ></include>
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/rating_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="22.65"
         android:background="@color/colorPrimaryLight"
         android:orientation="vertical"
-        android:weightSum="1"
-        android:id="@+id/rating_viewpager"
-        >
+        android:weightSum="1">
+
+        <LinearLayout
+            android:id="@+id/SliderDots"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></LinearLayout>
+
 
         <TextView
+            android:id="@+id/vleresimisherbimit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -31,9 +39,7 @@
             android:layout_marginTop="10dp"
             android:text="Si e vleresoni sherbimin?"
             android:textColor="@color/primaryTextColor"
-            android:id="@+id/vleresimisherbimit"
             android:textSize="17dp" />
-
 
 
         <RatingBar
@@ -49,10 +55,10 @@
 
 
         <TextView
+            android:id="@+id/lezetshem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/lezetshem"
             android:text="Lezetshem"
             android:textColor="@color/secondaryTextColor"
             android:textSize="15dp" />
@@ -69,12 +75,12 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
                 android:layout_marginTop="5dp"
-                >
+                android:orientation="horizontal">
 
 
                 <ImageView
+                    android:id="@+id/imageView"
                     android:layout_width="9dp"
                     android:layout_height="9dp"
                     android:layout_gravity="center_vertical"
@@ -96,21 +102,15 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="16dp"
                 android:layout_marginRight="16dp"
-                android:text="Publiko"
                 android:clickable="true"
+                android:text="Publiko"
                 android:textColor="@color/primaryTextColor" />
-
-
 
 
         </RelativeLayout>
 
 
-
-
     </android.support.v4.view.ViewPager>
-
-
 
 
     <RelativeLayout
