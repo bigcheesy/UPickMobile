@@ -31,9 +31,6 @@ public class RatingActivity extends AppCompatActivity {
 
     public static ArrayList<Rating> ratings;
     ViewPager viewPager;
-    LinearLayout sliderDotspanel;
-    private int dotscount;
-    private ImageView[] dots;
 
 
     @Override
@@ -41,54 +38,21 @@ public class RatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
         ratings = new ArrayList<>();
+
         viewPager = (ViewPager) findViewById(rating_viewpager);
-
-        viewPager.setAdapter(new CustomAdapter(getSupportFragmentManager(),getApplicationContext()));
-
         CustomAdapter customAdapter = new CustomAdapter(getSupportFragmentManager(),this);
-        dotscount = customAdapter.getCount();
-        dots = new ImageView[dotscount];
-        sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
 
-        for(int i = 0;  i < dotscount; i++){
+        viewPager.setAdapter(customAdapter);
 
-            dots[i] = new ImageView(this);
-            dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.pikjoaktive));
-            LinearLayout.LayoutParams params =  new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(8, 0, 8, 0);
-            sliderDotspanel.addView(dots[i], params);
-        }
+        LinearLayout sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
 
-        dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.pik));
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-                for(int i = 0; i < dotscount; i++){
-
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.pikjoaktive));
-                }
-
-                dots[position].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.pik));
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
+        ViewPagerDots viewPagerDots = new ViewPagerDots(viewPager, customAdapter, sliderDotspanel, getApplicationContext());
+        viewPagerDots.setListener();
 
         ratings.add(new Rating("Kristi", "Lokal qr", 5));
-        ratings.add(new Rating("Landi", "Lokal cka", 3));
-        ratings.add(new Rating("Tedi", "lokal qr", 5));
-        ratings.add(new Rating("Fabio", "lokal vk", 1));
+        ratings.add(new Rating("Dami", "Lokal cka", 3));
+        ratings.add(new Rating("Sergi", " -Left the group.", 1));
+        ratings.add(new Rating("Fabio", "Hajde e shkarkojm me TOR!", 5));
         createList();
     }
 
@@ -109,8 +73,6 @@ public class RatingActivity extends AppCompatActivity {
         }
 
         listView.setAdapter(ratingAdapter);
-
-
     }
 
 
