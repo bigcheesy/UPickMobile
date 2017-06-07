@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.dcyberpanda.upickmobile.BarActivityClasses.MenuFragment;
+import com.example.dcyberpanda.upickmobile.CustomAdapters.BarpickAdapter;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPagerDots viewPagerDots = new ViewPagerDots(viewPager, customAdapter, sliderDotspanel, getApplicationContext());
         viewPagerDots.setListener();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(MainActivity.this, BarpickActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void bar(View v){

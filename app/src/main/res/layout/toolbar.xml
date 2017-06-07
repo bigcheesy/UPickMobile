@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:title="@string/app_name"
+    app:titleTextColor="#fff"
     android:elevation="4dp"
     android:background="@color/colorPrimary">
 

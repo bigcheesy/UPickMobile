@@ -44,6 +44,13 @@ public class CouponActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CouponActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     protected void onStart() {
         LocalBroadcastManager.getInstance(this).registerReceiver((receiver),
                 new IntentFilter(CouponService.COUPON_RESULT)

@@ -63,6 +63,7 @@
                     android:elevation="6dp"
                     android:background="@color/colorPrimaryDark"
                     android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:onClick="bar">
 
                     <ImageView
@@ -88,6 +89,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:layout_weight="30"
                     android:elevation="4dp"
                     android:background="@color/colorPrimary"
@@ -120,6 +122,7 @@
                     android:layout_weight="30"
                     android:elevation="2dp"
                     android:background="#00d8f5"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:onClick="points">
 
