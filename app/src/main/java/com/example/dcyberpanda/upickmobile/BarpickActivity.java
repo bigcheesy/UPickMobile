@@ -32,9 +32,9 @@ public class BarpickActivity extends AppCompatActivity {
 
         bars = new ArrayList<>();
 
-        bars.add(new Bar("Dine", "Varri i Bomit", 4.5f));
-        bars.add(new Bar("Grand Bocca", "Rruga e burgut, perballe shkolles Harry Fultz.", 3f));
-        bars.add(new Bar("Mon cheri", "Rruga e kavajes", 5f));
+        bars.add(new Bar("Dine", "Varri i Bomit", 4.5f,R.drawable.barplaceholder1));
+        bars.add(new Bar("Grand Bocca", "Rruga e burgut, perballe shkolles Harry Fultz.", 3f, R.drawable.barplaceholder2));
+        bars.add(new Bar("Mon Cheri", "Rruga e kavajes", 5f, R.drawable.barplaceholder3));
 
         createList();
     }

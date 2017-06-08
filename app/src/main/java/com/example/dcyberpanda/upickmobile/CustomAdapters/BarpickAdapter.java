@@ -76,9 +76,6 @@ public class BarpickAdapter extends BaseAdapter implements Filterable{
         row = convertView;
         final DataHandler handler;
 
-        final Bar bar;
-        bar = (Bar) this.getItem(position);
-
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(viewid,parent,false);
@@ -90,28 +87,15 @@ public class BarpickAdapter extends BaseAdapter implements Filterable{
             handler.rating = (RatingBar) row.findViewById(R.id.bar_rating);
 
 
-
-            switch (bar.getName()){
-                case "Dine":
-                    handler.imageView.setImageResource(R.drawable.barplaceholder1);
-                    break;
-                case "Grand Bocca":
-                    handler.imageView.setImageResource(R.drawable.barplaceholder2);
-                    break;
-                case "Mon Cheri":
-                    handler.imageView.setImageResource(R.drawable.barplaceholder3);
-                    break;
-                default:
-                    break;
-            }
             row.setTag(handler);
         }else{
             handler = (DataHandler) row.getTag();
         }
 
+        final Bar bar;
+        bar = (Bar) this.getItem(position);
 
-
-
+        handler.imageView.setImageResource(bar.getDrawableid());
         handler.name.setText(bar.getName());
         handler.address.setText(bar.getAddress());
         handler.rating.setRating(bar.getRating());

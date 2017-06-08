@@ -8,11 +8,13 @@ public class Bar {
     private String name;
     private String address;
     private float rating;
+    private int drawableid;
 
-    public Bar(String name, String address, float rating) {
+    public Bar(String name, String address, float rating, int drawableid) {
         this.name = name;
         this.address = address;
         this.rating = rating;
+        this.drawableid = drawableid;
     }
 
     public String getName() {
@@ -37,5 +39,13 @@ public class Bar {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public int getDrawableid() {
+        return drawableid;
+    }
+
+    public void setDrawableid(int drawableid) {
+        this.drawableid = drawableid;
     }
 }
