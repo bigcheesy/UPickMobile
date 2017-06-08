@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             CartActivity.cartItems = new ArrayList<>();
         }
 
+
         ViewPager viewPager = (ViewPager) findViewById(main_pager);
         CustomAdapter customAdapter = new CustomAdapter(getSupportFragmentManager(),this);
 

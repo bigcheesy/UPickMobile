@@ -4,14 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dcyberpanda.upickmobile.Bar;
 import com.example.dcyberpanda.upickmobile.BarActivity;
@@ -22,16 +27,22 @@ import com.example.dcyberpanda.upickmobile.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
-public class BarpickAdapter extends ArrayAdapter {
+public class BarpickAdapter extends BaseAdapter implements Filterable{
 
     public static int viewid;
 
+    private Context context;
+    private ArrayList<Bar> originalItems;
+    private ArrayList<Bar> displayedItems;
+    private LayoutInflater inflater;
 
-    List list = new ArrayList();
-
-    public BarpickAdapter(Context context, int resource) {
-        super(context,resource);
+    public BarpickAdapter(Context context, ArrayList<Bar> mBarArrayList) {
+        this.originalItems = mBarArrayList;
+        this.displayedItems = mBarArrayList;
+        this.context = context;
+        inflater = LayoutInflater.from(context);
     }
 
     static class DataHandler{
@@ -43,32 +54,33 @@ public class BarpickAdapter extends ArrayAdapter {
     }
 
     @Override
-    public void add(Object object){
-        super.add(object);
-        list.add(object);
-    }
-
-    @Override
     public int getCount(){
-        return this.list.size();
+        return this.displayedItems.size();
     }
 
     @Override
     public Object getItem(int position){
-        return this.list.get(position);
+        return this.displayedItems.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-
         viewid = R.layout.bar_item;
 
         View row;
         row = convertView;
         final DataHandler handler;
 
+        final Bar bar;
+        bar = (Bar) this.getItem(position);
+
         if (convertView == null){
-            LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(viewid,parent,false);
             handler = new DataHandler();
             handler.name = (TextView) row.findViewById(R.id.bar_name);
@@ -76,14 +88,17 @@ public class BarpickAdapter extends ArrayAdapter {
             handler.cardView = (CardView) row.findViewById(R.id.bar_cardview);
             handler.imageView = (ImageView) row.findViewById(R.id.bar_image);
             handler.rating = (RatingBar) row.findViewById(R.id.bar_rating);
-            switch (position){
-                case 0:
+
+
+
+            switch (bar.getName()){
+                case "Dine":
                     handler.imageView.setImageResource(R.drawable.barplaceholder1);
                     break;
-                case 1:
+                case "Grand Bocca":
                     handler.imageView.setImageResource(R.drawable.barplaceholder2);
                     break;
-                case 2:
+                case "Mon Cheri":
                     handler.imageView.setImageResource(R.drawable.barplaceholder3);
                     break;
                 default:
@@ -95,8 +110,7 @@ public class BarpickAdapter extends ArrayAdapter {
         }
 
 
-        final Bar bar;
-        bar = (Bar) this.getItem(position);
+
 
         handler.name.setText(bar.getName());
         handler.address.setText(bar.getAddress());
@@ -105,12 +119,71 @@ public class BarpickAdapter extends ArrayAdapter {
         handler.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = getContext();
-                Intent intent = new Intent(getContext(), MainActivity.class);
+                Intent intent = new Intent(context, MainActivity.class);
                 context.startActivity(intent);
             }
         });
         return row;
     }
 
+    @Override
+    public Filter getFilter() {
+        Filter filter = new Filter() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint,FilterResults results) {
+
+                displayedItems = (ArrayList<Bar>) results.values; // has the filtered values
+                notifyDataSetChanged();  // notifies the data with new filtered values
+            }
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
+                ArrayList<Bar> FilteredArrList = new ArrayList<>();
+
+                if (originalItems == null) {
+                    originalItems = new ArrayList<>(displayedItems); // saves the original data in mOriginalValues
+                }
+
+                /********
+                 *
+                 *  If constraint(CharSequence that is received) is null returns the mOriginalValues(Original) values
+                 *  else does the Filtering and returns FilteredArrList(Filtered)
+                 *
+                 ********/
+                if (constraint == null || constraint.length() == 0) {
+
+                    // set the Original result to return
+                    results.count = originalItems.size();
+                    results.values = originalItems;
+                } else {
+                    constraint = constraint.toString().toLowerCase();
+
+                    boolean hasResults = false;
+
+                    for (Bar bar : originalItems){
+                        String data = bar.getName();
+                        if (data.toLowerCase().contains(constraint.toString())){
+                            FilteredArrList.add(bar);
+                            hasResults = true;
+                        }
+                    }
+
+                    if (!hasResults){
+                        results.count = originalItems.size();
+                        results.values = originalItems;
+                        Toast.makeText(context,"Nuk ka rezultate nga kerkimi juaj!",Toast.LENGTH_SHORT).show();
+                    }else {
+                        // set the Filtered result to return
+                        results.count = FilteredArrList.size();
+                        results.values = FilteredArrList;
+                    }
+                }
+                return results;
+            }
+        };
+        return filter;
+    }
 }
