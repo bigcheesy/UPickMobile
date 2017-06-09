@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dcyberpanda.upickmobile.CustomAdapters.CartAdapter;
 import com.example.dcyberpanda.upickmobile.CustomAdapters.RatingAdapter;
@@ -54,6 +55,42 @@ public class RatingActivity extends AppCompatActivity {
         ratings.add(new Rating("Sergi", " -Left the group.", 1));
         ratings.add(new Rating("Fabio", "Hajde e shkarkojm me TOR!", 5));
         createList();
+
+        final TextView next = (TextView) findViewById(R.id.rating_publiko);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int currentItem = viewPager.getCurrentItem();
+                if(currentItem == 0){
+                    viewPager.setCurrentItem(currentItem + 1);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Komenti juaj u publikua me sukses", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                int currentItem = viewPager.getCurrentItem();
+                if(currentItem == 0){
+                    next.setText("Vazhdo");
+                }else{
+                    next.setText("Publiko");
+                }
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
