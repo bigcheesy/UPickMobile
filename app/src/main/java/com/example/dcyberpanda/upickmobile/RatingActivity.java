@@ -56,6 +56,45 @@ public class RatingActivity extends AppCompatActivity {
         ratings.add(new Rating("Fabio", "Hajde e shkarkojm me TOR!", 5));
         createList();
 
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                if(rating<1.0f)
+                    ratingBar.setRating(1.0f);
+            }
+        });
+
+        final TextView ratingText = (TextView) findViewById(R.id.lezetshem);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                if (rating < 1.0f)
+                    ratingText.setText("E uerrej");
+                else if (rating < 2.0f)
+                {
+                    ratingText.setText("S'me pelqen");
+                }
+                else if (rating < 3.0f)
+                {
+                    ratingText.setText("Eshte ne rregull");
+                }
+                else if (rating < 4.0f) {
+                    ratingText.setText("Me pelqen");
+                }
+                else if (rating<5.0)
+                {
+                    ratingText.setText("E adhuroj");
+                }
+
+
+
+
+            }
+
+        });
+
+
         final TextView next = (TextView) findViewById(R.id.rating_publiko);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
