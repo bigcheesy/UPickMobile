@@ -20,14 +20,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:isIndicator="false" />
+        android:isIndicator="false"
+        android:rating="4" />
 
     <TextView
+        android:id="@+id/lezetshem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/lezetshem"
-        android:text="Lezetshem"
+        android:text="Shume mire"
         android:textColor="@color/secondaryTextColor"
         android:textSize="15dp" />
 

@@ -26,6 +26,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import static com.example.dcyberpanda.upickmobile.R.id.rating;
 import static com.example.dcyberpanda.upickmobile.R.id.rating_viewpager;
 
 public class RatingActivity extends AppCompatActivity {
@@ -56,45 +57,6 @@ public class RatingActivity extends AppCompatActivity {
         ratings.add(new Rating("Fabio", "Hajde e shkarkojm me TOR!", 5));
         createList();
 
-        RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                if(rating<1.0f)
-                    ratingBar.setRating(1.0f);
-            }
-        });
-
-        final TextView ratingText = (TextView) findViewById(R.id.lezetshem);
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                if (rating < 1.0f)
-                    ratingText.setText("E uerrej");
-                else if (rating < 2.0f)
-                {
-                    ratingText.setText("S'me pelqen");
-                }
-                else if (rating < 3.0f)
-                {
-                    ratingText.setText("Eshte ne rregull");
-                }
-                else if (rating < 4.0f) {
-                    ratingText.setText("Me pelqen");
-                }
-                else if (rating<5.0)
-                {
-                    ratingText.setText("E adhuroj");
-                }
-
-
-
-
-            }
-
-        });
-
-
         final TextView next = (TextView) findViewById(R.id.rating_publiko);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +75,7 @@ public class RatingActivity extends AppCompatActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 int currentItem = viewPager.getCurrentItem();
                 if(currentItem == 0){
+                    setRatingbarListener();
                     next.setText("Vazhdo");
                 }else{
                     next.setText("Publiko");
@@ -137,6 +100,35 @@ public class RatingActivity extends AppCompatActivity {
         Intent intent = new Intent(RatingActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void setRatingbarListener(){
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        final TextView ratingText = (TextView) findViewById(R.id.lezetshem);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                if (rating <= 1.0f) {
+                    ratingBar.setRating(1.0f);
+                    ratingText.setText("Keq");
+                }
+                else if (rating <= 2.0f)
+                {
+                    ratingText.setText("Le per te deshiruar");
+                }
+                else if (rating <= 3.0f)
+                {
+                    ratingText.setText("Mire");
+                }
+                else if (rating <= 4.0f) {
+                    ratingText.setText("Shume mire");
+                }
+                else if (rating<= 5.0)
+                {
+                    ratingText.setText("Perfekt");
+                }
+            }
+        });
     }
 
     private void createList(){
