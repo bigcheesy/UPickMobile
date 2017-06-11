@@ -13,11 +13,12 @@
         android:src="@drawable/login_background"
         />
 
-   <RelativeLayout
+   <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_gravity="center"
        android:layout_marginLeft="36dp"
+       android:orientation="vertical"
        android:layout_marginRight="36dp"
        android:layout_marginTop="36dp"
        >
@@ -27,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@drawable/rectangle"
-            android:layout_marginBottom="70dp"
             android:gravity="left"
             android:layout_gravity="center"
             android:hint="Emri"
@@ -44,7 +44,7 @@
             android:background="@drawable/rectangle"
             android:gravity="left"
             android:layout_gravity="center"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="16dp"
             android:hint="Mbiemri"
             android:inputType="textNoSuggestions"
             android:paddingLeft="25dp"
@@ -59,7 +59,7 @@
            android:background="@drawable/rectangle"
            android:gravity="left"
            android:layout_gravity="center"
-           android:layout_marginTop="110dp"
+           android:layout_marginTop="16dp"
            android:hint="Email"
            android:inputType="textNoSuggestions"
            android:paddingLeft="25dp"
@@ -74,7 +74,7 @@
            android:background="@drawable/rectangle"
            android:gravity="left"
            android:layout_gravity="center"
-           android:layout_marginTop="165dp"
+           android:layout_marginTop="16dp"
            android:hint="Password"
            android:inputType="textPassword"
            android:paddingLeft="25dp"
@@ -88,7 +88,7 @@
            android:layout_height="30dp"
            android:gravity="center"
            android:text="Regjistrohu"
-           android:layout_marginTop="240dp"
+           android:layout_marginTop="32dp"
            android:clickable="true"
            android:textColor="#fff"
            android:textSize="20sp"
@@ -96,12 +96,6 @@
            android:textStyle="bold"
            android:layout_above="@+id/textView18"
            />
-
-
-   </RelativeLayout>
-
-
-
-
+   </LinearLayout>
 </FrameLayout>
 
