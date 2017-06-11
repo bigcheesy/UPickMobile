@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/login_background"
+        />
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:layout_marginLeft="36dp"
+       android:layout_marginRight="36dp"
+       android:layout_marginTop="36dp"
+       >
+
+        <EditText
+            android:id="@+id/register_emri"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/rectangle"
+            android:layout_marginBottom="70dp"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:hint="Emri"
+            android:inputType="textNoSuggestions"
+            android:paddingLeft="25dp"
+            android:textColor="#cfcfcf"
+            android:textColorHint="#cfcfcf"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/register_mbiemri"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/rectangle"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:layout_marginTop="55dp"
+            android:hint="Mbiemri"
+            android:inputType="textNoSuggestions"
+            android:paddingLeft="25dp"
+            android:textColor="#cfcfcf"
+            android:textColorHint="#cfcfcf"
+            android:textSize="18sp" />
+
+       <EditText
+           android:id="@+id/register_email"
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:background="@drawable/rectangle"
+           android:gravity="left"
+           android:layout_gravity="center"
+           android:layout_marginTop="110dp"
+           android:hint="Email"
+           android:inputType="textNoSuggestions"
+           android:paddingLeft="25dp"
+           android:textColor="#cfcfcf"
+           android:textColorHint="#cfcfcf"
+           android:textSize="18sp" />
+
+       <EditText
+           android:id="@+id/register_password"
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:background="@drawable/rectangle"
+           android:gravity="left"
+           android:layout_gravity="center"
+           android:layout_marginTop="165dp"
+           android:hint="Password"
+           android:inputType="textPassword"
+           android:paddingLeft="25dp"
+           android:textColor="#cfcfcf"
+           android:textColorHint="#cfcfcf"
+           android:textSize="18sp" />
+
+       <TextView
+           android:id="@+id/textView19"
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:gravity="center"
+           android:text="Regjistrohu"
+           android:layout_marginTop="240dp"
+           android:clickable="true"
+           android:textColor="#fff"
+           android:textSize="20sp"
+           android:background="@drawable/rectangle3"
+           android:textStyle="bold"
+           android:layout_above="@+id/textView18"
+           />
+
+
+   </RelativeLayout>
+
+
+
+
+</FrameLayout>
+
