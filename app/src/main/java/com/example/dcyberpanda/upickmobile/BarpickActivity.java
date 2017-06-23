@@ -5,15 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.*;
-import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.dcyberpanda.upickmobile.CustomAdapters.BarpickAdapter;
-import com.example.dcyberpanda.upickmobile.CustomAdapters.CartAdapter;
-import com.example.dcyberpanda.upickmobile.R;
 
 import java.util.ArrayList;
 
@@ -32,11 +27,16 @@ public class BarpickActivity extends AppCompatActivity {
 
         bars = new ArrayList<>();
 
-        bars.add(new Bar("Dine", "Varri i Bomit", 4.5f,R.drawable.barplaceholder1));
-        bars.add(new Bar("Grand Bocca", "Rruga e burgut, perballe shkolles Harry Fultz.", 3f, R.drawable.barplaceholder2));
-        bars.add(new Bar("Mon Cheri", "Rruga e kavajes", 5f, R.drawable.barplaceholder3));
-
-        createList();
+        DatabaseConnection connection = new DatabaseConnection(BarpickActivity.this);
+        connection.getBarMenu(new DatabaseConnection.VolleyCallback() {
+            @Override
+            public void onSuccess(ArrayList result) {
+                for (Object object : result){
+                    bars.add((Bar) object);
+                }
+                createList();
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

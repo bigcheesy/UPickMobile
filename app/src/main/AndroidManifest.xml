@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dcyberpanda.upickmobile">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,7 +29,8 @@
 
         <service android:name=".CouponService" />
 
-        <activity android:name=".BarpickActivity"></activity>
+        <activity android:name=".BarpickActivity" />
+        <activity android:name=".RegisterActivity"/>
     </application>
 
 </manifest>

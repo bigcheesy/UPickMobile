@@ -108,6 +108,8 @@
                 android:layout_height="@dimen/login_box_height"
                 android:gravity="center"
                 android:text="Register"
+                android:clickable="true"
+                android:onClick="toRegister"
                 android:layout_marginLeft="@dimen/login_sidemargin"
                 android:layout_marginRight="@dimen/login_sidemargin"
                 android:textColor="#fff"

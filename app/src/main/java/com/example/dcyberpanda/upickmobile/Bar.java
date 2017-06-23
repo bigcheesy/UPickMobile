@@ -8,13 +8,15 @@ public class Bar {
     private String name;
     private String address;
     private float rating;
-    private int drawableid;
+    private String drawableid;
+    private String dbanme;
 
-    public Bar(String name, String address, float rating, int drawableid) {
+    public Bar(String name, String address, float rating, String drawableid, String dbname) {
         this.name = name;
         this.address = address;
         this.rating = rating;
         this.drawableid = drawableid;
+        this.dbanme = dbname;
     }
 
     public String getName() {
@@ -41,11 +43,19 @@ public class Bar {
         this.rating = rating;
     }
 
-    public int getDrawableid() {
+    public String getDrawableid() {
         return drawableid;
     }
 
-    public void setDrawableid(int drawableid) {
+    public void setDrawableid(String drawableid) {
         this.drawableid = drawableid;
+    }
+
+    public String getDbanme() {
+        return dbanme;
+    }
+
+    public void setDbanme(String dbanme) {
+        this.dbanme = dbanme;
     }
 }

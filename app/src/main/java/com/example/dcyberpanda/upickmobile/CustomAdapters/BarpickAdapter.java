@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 public class BarpickAdapter extends BaseAdapter implements Filterable{
 
+    public static final String DBNAME_INDEX = "dbname_index";
     public static int viewid;
 
     private Context context;
@@ -87,7 +88,20 @@ public class BarpickAdapter extends BaseAdapter implements Filterable{
         final Bar bar;
         bar = (Bar) this.getItem(position);
 
-        handler.imageView.setImageResource(bar.getDrawableid());
+        switch (bar.getName()){
+            case "Grand Bocca":
+                handler.imageView.setImageResource(R.drawable.barplaceholder1);
+                break;
+            case "Dine":
+                handler.imageView.setImageResource(R.drawable.barplaceholder2);
+                break;
+            case "Mon Cheri":
+                handler.imageView.setImageResource(R.drawable.barplaceholder3);
+                break;
+            default:
+                handler.imageView.setImageResource(R.drawable.barplaceholder1);
+                break;
+        }
         handler.name.setText(bar.getName());
         handler.address.setText(bar.getAddress());
         handler.rating.setRating(bar.getRating());
@@ -95,7 +109,9 @@ public class BarpickAdapter extends BaseAdapter implements Filterable{
         handler.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(context, MainActivity.class);
+                intent.putExtra(DBNAME_INDEX, bar.getDbanme());
                 context.startActivity(intent);
             }
         });

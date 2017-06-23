@@ -25,10 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String OFFER_INDEX = "offerindex";
 
+    public static String CURRENT_BAR;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        String barDB = getIntent().getStringExtra(BarpickAdapter.DBNAME_INDEX);
+        if (barDB != null){
+            CURRENT_BAR = barDB;
+        }
 
         if (CartActivity.cartItems == null) {
             CartActivity.cartItems = new ArrayList<>();
