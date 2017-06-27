@@ -95,13 +95,11 @@ public class BarpickAdapter extends BaseAdapter implements Filterable{
         final ImageCache imageCache = new ImageCache(context);
         final String imagesrc = bar.getDrawableid();
         if (imageCache.imageExists(imagesrc)){
-            Log.d("lmao","Getting from cache");
-            imageCache.getFromCache(imagesrc);
+            handler.imageView.setImageBitmap(imageCache.getFromCache(imagesrc));
         }else {
             DatabaseConnection.getImage(context, DatabaseConnection.BARPICS_DIRECTORY, bar.getDrawableid(), new DatabaseConnection.VolleyCallback() {
                 @Override
                 public void onSuccess(Object result) {
-                    Log.d("lmao","Getting from the webz");
                     Bitmap resultBitmap = (Bitmap) result;
                     imageCache.writeInCache(resultBitmap, imagesrc);
                     handler.imageView.setImageBitmap(resultBitmap);

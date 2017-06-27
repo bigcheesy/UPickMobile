@@ -46,7 +46,7 @@ public class ImageCache {
         try {
             File file = new File(directory,filename);
             out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out); // bmp is your Bitmap instance
             // PNG is a lossless format, the compression factor (100) is ignored
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,8 +63,6 @@ public class ImageCache {
 
     public Bitmap getFromCache(String filename){
         File path = new File(directory,filename);
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        return BitmapFactory.decodeFile(path.getAbsolutePath(), options);
+        return BitmapFactory.decodeFile(path.getAbsolutePath());
     }
 }

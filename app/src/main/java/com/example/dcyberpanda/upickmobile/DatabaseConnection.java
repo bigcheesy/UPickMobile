@@ -89,8 +89,10 @@ public class DatabaseConnection {
     {
         String url = serverAddress + "/get_ratings.php";
         final ArrayList<Rating> ratings = new ArrayList<>();
+        Map<String,String> params = new HashMap<>();
+        params.put("name",MainActivity.CURRENT_BAR);
 
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, (String) null, new Response.Listener<JSONObject>() {
+        final CustomJsonRequest jsonObjectRequest = new CustomJsonRequest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try{
@@ -110,16 +112,9 @@ public class DatabaseConnection {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.d("lmao",error.getMessage());
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> param = new HashMap<>();
-                param.put("name",MainActivity.CURRENT_BAR);
-                return param;
-            }
-        };
+        });
         ConnectionSingleton.getInstance(context.getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 
