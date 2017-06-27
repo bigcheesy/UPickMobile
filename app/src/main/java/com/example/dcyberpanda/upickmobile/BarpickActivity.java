@@ -1,5 +1,6 @@
 package com.example.dcyberpanda.upickmobile;
 
+import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,16 +28,23 @@ public class BarpickActivity extends AppCompatActivity {
 
         bars = new ArrayList<>();
 
-        DatabaseConnection connection = new DatabaseConnection(BarpickActivity.this);
-        connection.getBarMenu(new DatabaseConnection.VolleyCallback() {
+        DatabaseConnection.getBarMenu(this, new DatabaseConnection.VolleyCallback() {
             @Override
-            public void onSuccess(ArrayList result) {
-                for (Object object : result){
+            public void onSuccess(Object result) {
+                ArrayList arrayResult = (ArrayList) result;
+                for (Object object : arrayResult){
                     bars.add((Bar) object);
                 }
                 createList();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(BarpickActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

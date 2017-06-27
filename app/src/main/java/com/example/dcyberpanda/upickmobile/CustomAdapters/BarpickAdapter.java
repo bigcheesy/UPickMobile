@@ -2,7 +2,9 @@ package com.example.dcyberpanda.upickmobile.CustomAdapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dcyberpanda.upickmobile.Bar;
+import com.example.dcyberpanda.upickmobile.DatabaseConnection;
+import com.example.dcyberpanda.upickmobile.ImageCache;
 import com.example.dcyberpanda.upickmobile.MainActivity;
 import com.example.dcyberpanda.upickmobile.R;
 
@@ -88,20 +92,23 @@ public class BarpickAdapter extends BaseAdapter implements Filterable{
         final Bar bar;
         bar = (Bar) this.getItem(position);
 
-        switch (bar.getName()){
-            case "Grand Bocca":
-                handler.imageView.setImageResource(R.drawable.barplaceholder1);
-                break;
-            case "Dine":
-                handler.imageView.setImageResource(R.drawable.barplaceholder2);
-                break;
-            case "Mon Cheri":
-                handler.imageView.setImageResource(R.drawable.barplaceholder3);
-                break;
-            default:
-                handler.imageView.setImageResource(R.drawable.barplaceholder1);
-                break;
+        final ImageCache imageCache = new ImageCache(context);
+        final String imagesrc = bar.getDrawableid();
+        if (imageCache.imageExists(imagesrc)){
+            Log.d("lmao","Getting from cache");
+            imageCache.getFromCache(imagesrc);
+        }else {
+            DatabaseConnection.getImage(context, DatabaseConnection.BARPICS_DIRECTORY, bar.getDrawableid(), new DatabaseConnection.VolleyCallback() {
+                @Override
+                public void onSuccess(Object result) {
+                    Log.d("lmao","Getting from the webz");
+                    Bitmap resultBitmap = (Bitmap) result;
+                    imageCache.writeInCache(resultBitmap, imagesrc);
+                    handler.imageView.setImageBitmap(resultBitmap);
+                }
+            });
         }
+
         handler.name.setText(bar.getName());
         handler.address.setText(bar.getAddress());
         handler.rating.setRating(bar.getRating());

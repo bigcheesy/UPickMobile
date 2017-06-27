@@ -1,11 +1,14 @@
 package com.example.dcyberpanda.upickmobile;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -22,17 +25,14 @@ import java.util.ArrayList;
 
 public class DatabaseConnection {
     private static final String serverAddress = "http://45.55.135.14";
-    private Context context;
+    public static final String BARPICS_DIRECTORY = "bar_pics";
+    public static final String OFFERPICS_DIRECTORY = "bar_offers";
 
     public interface VolleyCallback{
-        void onSuccess(ArrayList result);
+        void onSuccess(Object result);
     }
 
-    public DatabaseConnection(Context context){
-        this.context = context.getApplicationContext();
-    }
-
-    public void getBarMenu(final VolleyCallback callback){
+    public static void getBarMenu(Context context, final VolleyCallback callback){
         String url = serverAddress + "/get_bars.php";
         final ArrayList<Bar> bars = new ArrayList<>();
 
@@ -62,6 +62,23 @@ public class DatabaseConnection {
         });
 
         ConnectionSingleton.getInstance(context.getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+    }
+
+    public static void getImage(Context context,String dirsrc, String pic_src, final VolleyCallback volleyCallback){
+        String url = serverAddress + "/" + dirsrc + "/" + pic_src;
+
+        ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                volleyCallback.onSuccess(response);
+            }
+        }, 0, 0, ImageView.ScaleType.FIT_XY, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("lmao",error.getMessage());
+            }
+        });
+        ConnectionSingleton.getInstance(context.getApplicationContext()).addToRequestQueue(imageRequest);
     }
 
 }
