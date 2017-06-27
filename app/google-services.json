@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "666208308724",
+    "project_id": "upickmobile"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666208308724:android:180f2153bebdf7f6",
+        "android_client_info": {
+          "package_name": "com.example.dcyberpanda.upickmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666208308724-e9l95ajr63jqbmrdjbccvsbp2dnjahmj.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "666208308724-hiuspr0d4iqgn0ga9176kteh1raq3i1l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dcyberpanda.upickmobile",
+            "certificate_hash": "ce1603a0575df23d4417cd40e5eca10d350f3f86"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDt1omUcRf9L5vYW52DZZRcwNXm-9Yy1MI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

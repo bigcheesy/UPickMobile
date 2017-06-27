@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,6 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by D'CyberPanda on 6/22/2017.
@@ -64,6 +67,7 @@ public class DatabaseConnection {
         ConnectionSingleton.getInstance(context.getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 
+
     public static void getImage(Context context,String dirsrc, String pic_src, final VolleyCallback volleyCallback){
         String url = serverAddress + "/" + dirsrc + "/" + pic_src;
 
@@ -80,5 +84,44 @@ public class DatabaseConnection {
         });
         ConnectionSingleton.getInstance(context.getApplicationContext()).addToRequestQueue(imageRequest);
     }
+
+    public static void getRatings  (Context context, final VolleyCallback callback)
+    {
+        String url = serverAddress + "/get_ratings.php";
+        final ArrayList<Rating> ratings = new ArrayList<>();
+
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, (String) null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try{
+                    JSONArray jsonArray = response.getJSONArray("ratings");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        Rating rating = new Rating(object.getInt("user_id"), object.getString("user_name"), object.getString("user_comment"),object.getInt("user_rating"));
+                        ratings.add(rating);
+                    }
+
+                    callback.onSuccess(ratings);
+                }catch (JSONException y){
+                    Log.d("lmao", y.getMessage());
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> param = new HashMap<>();
+                param.put("name",MainActivity.CURRENT_BAR);
+                return param;
+            }
+        };
+        ConnectionSingleton.getInstance(context.getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+    }
+
 
 }

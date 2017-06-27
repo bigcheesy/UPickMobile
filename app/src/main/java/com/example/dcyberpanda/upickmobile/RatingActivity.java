@@ -51,11 +51,17 @@ public class RatingActivity extends AppCompatActivity {
         ViewPagerDots viewPagerDots = new ViewPagerDots(viewPager, customAdapter, sliderDotspanel, getApplicationContext());
         viewPagerDots.setListener();
 
-        ratings.add(new Rating("Kristi", "Lokal qr", 5));
-        ratings.add(new Rating("Dami", "Lokal cka", 3));
-        ratings.add(new Rating("Sergi", " -Left the group.", 1));
-        ratings.add(new Rating("Fabio", "Hajde e shkarkojm me TOR!", 5));
-        createList();
+        DatabaseConnection.getRatings(this, new DatabaseConnection.VolleyCallback() {
+            @Override
+            public void onSuccess(Object result) {
+                ArrayList arrayResult = (ArrayList) result;
+                for (Object object : arrayResult) {
+                    ratings.add((Rating) object);
+                }
+                createList();
+            }
+        });
+
 
         final TextView next = (TextView) findViewById(R.id.rating_publiko);
         next.setOnClickListener(new View.OnClickListener() {

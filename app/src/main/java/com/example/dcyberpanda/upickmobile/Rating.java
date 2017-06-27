@@ -5,11 +5,13 @@ public class Rating {
     String name;
     String comment;
     int rating;
+    int userId;
 
-    public Rating(String name, String comment, int rating) {
+    public Rating(int userId ,String name, String comment, int rating) {
         this.name = name;
         this.comment = comment;
         this.rating = rating;
+        this.userId = userId;
 
 
     }
@@ -36,6 +38,14 @@ public class Rating {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
 
