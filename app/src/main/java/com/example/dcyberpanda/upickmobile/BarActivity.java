@@ -29,22 +29,49 @@ public class BarActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager viewPager;
+    public static ArrayList<ArrayList<MenuItem>> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar);
 
+        if (items == null) {
+            items = new ArrayList<>();
+        }
 
         viewPager = (ViewPager) findViewById(R.id.bar_pager);
-        viewPager.setAdapter(new CustomAdapter(getSupportFragmentManager(),getApplicationContext()));
-
         tabLayout = (TabLayout) findViewById(R.id.bar_tabs);
+
+        if (items.isEmpty()) {
+            DatabaseConnection.getMenu(this, new DatabaseConnection.VolleyCallback() {
+                @Override
+                public void onSuccess(Object result) {
+                    ArrayList arrayResult = (ArrayList) result;
+                    String previousCategory = ((MenuItem) arrayResult.get(0)).getCategory();
+                    ArrayList<MenuItem> tempArray = new ArrayList<>();
+                    for (Object object : arrayResult) {
+                        MenuItem item = (MenuItem) object;
+                        if (!item.getCategory().equals(previousCategory)) {
+                            previousCategory = item.getCategory();
+                            items.add(tempArray);
+                            tempArray = new ArrayList<>();
+                        }
+                        tempArray.add(item);
+                    }
+                    items.add(tempArray);
+                    initializeTabs();
+                }
+            });
+        }else{
+            initializeTabs();
+        }
+    }
+
+    private void initializeTabs(){
+        viewPager.setAdapter(new CustomAdapter(getSupportFragmentManager(),getApplicationContext()));
         tabLayout.setupWithViewPager(viewPager);
 
-        for (CartItem item : CartActivity.cartItems){
-            Log.d("lmao", item.getName() + " " + item.getQuantity());
-        }
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -77,23 +104,17 @@ public class BarActivity extends AppCompatActivity {
     }
 
     private class CustomAdapter extends FragmentPagerAdapter {
-        private String[] titles = {"Te ngrohta", "Freskuese", "Alkolike"};
+        private String[] titles = new String[items.size()];
         public CustomAdapter(FragmentManager supportFragmentManager, Context applicationContext) {
             super(supportFragmentManager);
+            for (int i = 0; i < titles.length;i++){
+                titles[i] = items.get(i).get(0).getCategory();
+            }
         }
 
         @Override
         public Fragment getItem(int position) {
-            switch (position){
-                case 0:
-                    return createFragment(getItemsWarm(),position);
-                case 1:
-                    return createFragment(getItemsCold(),position);
-                case 2:
-                    return createFragment(getItemsAlcoholic(),position);
-                default:
-                    return createFragment(getItemsWarm(),0);
-            }
+            return createFragment(items.get(position),titles[position]);
         }
 
         @Override
@@ -107,50 +128,14 @@ public class BarActivity extends AppCompatActivity {
         }
     }
 
-    private Fragment createFragment(ArrayList<MenuItem> items,int position){
+    private Fragment createFragment(ArrayList<MenuItem> items,String category){
         MenuFragment fragment = new MenuFragment();
 
         Bundle args = new Bundle();
         args.putParcelableArrayList(BAR_ITEMS_INDEX,items);
-        args.putInt(THUMBNAIL_INDEX,position);
+        args.putString(THUMBNAIL_INDEX,category);
         fragment.setArguments(args);
 
         return fragment;
-    }
-
-    private ArrayList<MenuItem> getItemsWarm(){
-        ArrayList<MenuItem> items = new ArrayList<>();
-        items.add(new MenuItem("Caj",60));
-        items.add(new MenuItem("Cokollate e ngrohte",150));
-        items.add(new MenuItem("Kafe",60));
-        items.add(new MenuItem("Kafe latte",150));
-        items.add(new MenuItem("Kakao",100));
-        items.add(new MenuItem("Kapucino",120));
-        items.add(new MenuItem("Makiato",80));
-        items.add(new MenuItem("Makiato e gjate",100));
-        items.add(new MenuItem("Salep",120));
-        return items;
-    }
-
-    private ArrayList<MenuItem> getItemsCold(){
-        ArrayList<MenuItem> items = new ArrayList<>();
-        items.add(new MenuItem("Caj i ftohte",60));
-        items.add(new MenuItem("Coca Cola",120));
-        items.add(new MenuItem("Cokollate e ftohte",150));
-        items.add(new MenuItem("Fanta",120));
-        items.add(new MenuItem("Kapucino fredo",120));
-
-        return items;
-    }
-
-    private ArrayList<MenuItem> getItemsAlcoholic(){
-        ArrayList<MenuItem> items = new ArrayList<>();
-        items.add(new MenuItem("Amaro montenegro",500));
-        items.add(new MenuItem("Jack Daniels",700));
-        items.add(new MenuItem("Jagermeister",500));
-        items.add(new MenuItem("Raki",100));
-        items.add(new MenuItem("Vodka",500));
-
-        return items;
     }
 }

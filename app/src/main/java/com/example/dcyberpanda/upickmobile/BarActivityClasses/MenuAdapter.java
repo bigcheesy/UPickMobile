@@ -29,13 +29,13 @@ public class MenuAdapter extends ArrayAdapter{
     public static int viewid;
     public static Activity activity;
 
-    int thumbnailIndex;
+    private String category;
 
     List list = new ArrayList();
 
-    public MenuAdapter(Context context, int resource, int thumbnailIndex) {
+    public MenuAdapter(Context context, int resource, String category) {
         super(context,resource);
-        this.thumbnailIndex = thumbnailIndex;
+        this.category = category;
     }
 
     static class DataHandler{
@@ -107,16 +107,18 @@ public class MenuAdapter extends ArrayAdapter{
     }
 
     private ImageView setThumbnailSrc(ImageView thumbnail){
-        switch (thumbnailIndex){
-            case 0:
+        switch (category){
+            case "Te ngrohta":
                 thumbnail.setImageResource(R.drawable.coffeethumbnail);
                 break;
-            case 1:
+            case "Freskuese":
                 thumbnail.setImageResource(R.drawable.softdrinkthumbnail);
                 break;
-            case 2:
+            case "Alkolike":
                 thumbnail.setImageResource(R.drawable.alcoholicthumbnail);
                 break;
+            default:
+                thumbnail.setImageResource(R.drawable.alcoholicthumbnail);
         }
         return thumbnail;
     }

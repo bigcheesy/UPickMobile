@@ -3,6 +3,7 @@ package com.example.dcyberpanda.upickmobile;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.view.Menu;
 import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
@@ -67,7 +68,6 @@ public class DatabaseConnection {
         ConnectionSingleton.getInstance(context.getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 
-
     public static void getImage(Context context,String dirsrc, String pic_src, final VolleyCallback volleyCallback){
         String url = serverAddress + "/" + dirsrc + "/" + pic_src;
 
@@ -118,5 +118,38 @@ public class DatabaseConnection {
         ConnectionSingleton.getInstance(context.getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 
+    public static void getMenu(Context context, final VolleyCallback callback){
+        String url = serverAddress + "/get_menu.php";
+        final ArrayList<MenuItem> items = new ArrayList<>();
 
+        Map<String,String> params = new HashMap<>();
+        params.put("name",MainActivity.CURRENT_BAR);
+
+        final CustomJsonRequest jsonObjectRequest = new CustomJsonRequest(Request.Method.POST, url, params, new Response.Listener<JSONObject>(){
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray jsonArray = response.getJSONArray("menu");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        MenuItem item = new MenuItem(object.getString("item_name"),object.getInt("item_price"),object.getString("item_category"));
+                        items.add(item);
+                    }
+
+                    callback.onSuccess(items);
+                } catch (JSONException x) {
+                    System.out.print(x);
+                }
+            }
+
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error){
+                Log.d("lmao",error.getMessage());
+
+            }
+        });
+
+        ConnectionSingleton.getInstance(context.getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+    }
 }

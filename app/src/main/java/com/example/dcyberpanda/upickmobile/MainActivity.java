@@ -33,14 +33,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         String barDB = getIntent().getStringExtra(BarpickAdapter.DBNAME_INDEX);
+
         if (barDB != null){
             CURRENT_BAR = barDB;
+            BarActivity.items = new ArrayList<>();
+            CartActivity.cartItems = new ArrayList<>();
         }
 
         if (CartActivity.cartItems == null) {
             CartActivity.cartItems = new ArrayList<>();
         }
-
 
         ViewPager viewPager = (ViewPager) findViewById(main_pager);
         CustomAdapter customAdapter = new CustomAdapter(getSupportFragmentManager(),this);

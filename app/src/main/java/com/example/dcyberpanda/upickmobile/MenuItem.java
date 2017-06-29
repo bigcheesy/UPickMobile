@@ -7,13 +7,14 @@ import android.os.Parcelable;
  * Created by D'CyberPanda on 5/19/2017.
  */
 public class MenuItem implements Parcelable {
-    public String name;
-    public Integer price;
+    private String name;
+    private Integer price;
+    private String category;
 
-
-    public MenuItem(String name, Integer price) {
+    public MenuItem(String name, Integer price, String category) {
         this.name = name;
         this.price = price;
+        this.category = category;
     }
 
     public String getName() {
@@ -30,6 +31,14 @@ public class MenuItem implements Parcelable {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     protected MenuItem(Parcel in) {

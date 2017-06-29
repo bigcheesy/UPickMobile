@@ -22,7 +22,7 @@ public class MenuFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        int thumbnailIndex = getArguments().getInt(BarActivity.THUMBNAIL_INDEX);
+        String category = getArguments().getString(BarActivity.THUMBNAIL_INDEX);
         ArrayList<MenuItem> items = getArguments().getParcelableArrayList(BarActivity.BAR_ITEMS_INDEX);
         // Inflate the layout for this fragment
         //This layout contains your list view
@@ -30,7 +30,7 @@ public class MenuFragment extends android.support.v4.app.Fragment {
 
 
         ListView listView =(ListView)view.findViewById(R.id.bar_menu);
-        MenuAdapter menuAdapter = new MenuAdapter(getActivity(), R.layout.menu_item,thumbnailIndex);
+        MenuAdapter menuAdapter = new MenuAdapter(getActivity(), R.layout.menu_item,category);
 
         for (MenuItem item : items){
             menuAdapter.add(item);
