@@ -48,7 +48,7 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/login_username"
+                android:id="@+id/login_phonenr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_box_height"
                 android:layout_above="@+id/login_password"
@@ -57,7 +57,7 @@
                 android:layout_marginRight="@dimen/login_sidemargin"
                 android:background="@drawable/rectangle"
                 android:gravity="left|center_vertical"
-                android:hint="Username"
+                android:hint="Nr. i telefonit"
                 android:inputType="textNoSuggestions"
                 android:paddingLeft="16dp"
                 android:textColor="#cfcfcf"

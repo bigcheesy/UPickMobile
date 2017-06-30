@@ -32,14 +32,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+
         String barDB = getIntent().getStringExtra(BarpickAdapter.DBNAME_INDEX);
 
         if (barDB != null){
             CURRENT_BAR = barDB;
             BarActivity.items = new ArrayList<>();
             CartActivity.cartItems = new ArrayList<>();
+            OfferCache.offerSrcs = new ArrayList<>();
+            DatabaseConnection.getOffers(this.getApplicationContext(), new DatabaseConnection.VolleyCallback() {
+                @Override
+                public void onSuccess(Object result) {
+                    ArrayList<String> resultArray = (ArrayList<String>) result;
+                    for (String str : resultArray){
+                        OfferCache.offerSrcs.add(str);
+                    }
+                    initializeViews();
+                }
+            });
+        }else{
+            initializeViews();
         }
+    }
 
+    private void initializeViews(){
         if (CartActivity.cartItems == null) {
             CartActivity.cartItems = new ArrayList<>();
         }
@@ -89,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class CustomAdapter extends FragmentPagerAdapter {
-        int fragmentNumber = 3;
+        int fragmentNumber = OfferCache.offerSrcs.size();
 
         public CustomAdapter(FragmentManager supportFragmentManager, Context applicationContext) {
             super(supportFragmentManager);

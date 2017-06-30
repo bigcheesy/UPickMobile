@@ -3,7 +3,6 @@ package com.example.dcyberpanda.upickmobile;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
@@ -12,21 +11,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by D'CyberPanda on 6/22/2017.
+ * Created by D'CyberPanda on 6/29/2017.
  */
 
-public class ImageCache {
+public class OfferCache {
 
+    public static ArrayList<String> offerSrcs;
     private Context context;
     private File directory;
 
-    public ImageCache(Context context){
+    public OfferCache (Context context){
         this.context = context.getApplicationContext();
         directory = getDir();
+        directory.deleteOnExit();
     }
 
     private File getDir(){
-        File cacheDir = new File(context.getCacheDir(),"bar_pics");
+        File cacheDir = new File(context.getCacheDir(),"bar_offers");
 
         if (!cacheDir.exists()){
             if (!cacheDir.mkdir()){
@@ -34,11 +35,6 @@ public class ImageCache {
             }
         }
         return cacheDir;
-    }
-
-    public boolean imageExists(String imageSrc){
-        File file = new File(directory,imageSrc);
-        return file.exists();
     }
 
     public void writeInCache(Bitmap bitmap, String filename){
@@ -58,6 +54,11 @@ public class ImageCache {
                 e.printStackTrace();
             }
         }
+    }
+
+    public boolean imageExists(String imageSrc){
+        File file = new File(directory,imageSrc);
+        return file.exists();
     }
 
     public Bitmap getFromCache(String filename){

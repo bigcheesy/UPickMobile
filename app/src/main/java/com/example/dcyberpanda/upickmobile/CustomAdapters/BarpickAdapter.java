@@ -97,7 +97,7 @@ public class BarpickAdapter extends BaseAdapter implements Filterable{
         if (imageCache.imageExists(imagesrc)){
             handler.imageView.setImageBitmap(imageCache.getFromCache(imagesrc));
         }else {
-            DatabaseConnection.getImage(context, DatabaseConnection.BARPICS_DIRECTORY, bar.getDrawableid(), new DatabaseConnection.VolleyCallback() {
+            DatabaseConnection.getImage(context,DatabaseConnection.BARPICS_DIRECTORY, bar.getDrawableid(), new DatabaseConnection.VolleyCallback() {
                 @Override
                 public void onSuccess(Object result) {
                     Bitmap resultBitmap = (Bitmap) result;

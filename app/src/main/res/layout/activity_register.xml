@@ -23,7 +23,7 @@
        >
 
         <EditText
-            android:id="@+id/register_emri"
+            android:id="@+id/register_name"
             android:layout_width="match_parent"
             android:layout_height="@dimen/login_box_height"
             android:background="@drawable/rectangle"
@@ -36,7 +36,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/register_mbiemri"
+            android:id="@+id/register_surname"
             android:layout_width="match_parent"
             android:layout_height="@dimen/login_box_height"
             android:background="@drawable/rectangle"
@@ -50,14 +50,14 @@
             android:textSize="18sp" />
 
        <EditText
-           android:id="@+id/register_email"
+           android:id="@+id/register_phonenr"
            android:layout_width="match_parent"
            android:layout_height="@dimen/login_box_height"
+           android:layout_marginTop="16dp"
            android:background="@drawable/rectangle"
            android:gravity="left|center_vertical"
-           android:layout_marginTop="16dp"
-           android:hint="Email"
-           android:inputType="textNoSuggestions"
+           android:hint="Nr. i telefonit"
+           android:inputType="phone"
            android:paddingLeft="25dp"
            android:textColor="#cfcfcf"
            android:textColorHint="#cfcfcf"
